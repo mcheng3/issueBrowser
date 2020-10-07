@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Walmart Issue Browser</title>
+
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+</head>
+
+<body style="height:100%; position: relative; min-height: 100vh; 
+padding: 30px 100px 50px;background-position: center; background-repeat: no-repeat;  background-size: cover;">
+  <h1>Walmart Issue Browser</h1>
+  <br>
+  {% set color = "text-danger" %}
+  {% if issue["state"] == "open" %}
+    {% set color = "text-success" %}
+  {% endif %}
+  <h3><a href={{issue["html_url"]}}><strong><u>Issue #{{issue["number"]}}</u></strong></a>: {{issue["title"]}}  
+    <p class="{{color}} font-weight-bold">{{issue["state"]}}</p>
+  </h3> 
+  <br>
+  {% set url = issue["user"]["html_url"] %}
+  <strong>Created by:</strong> <a href="{{url}}">{{issue["user"]["login"]}}</a>
+  <br>
+  <strong>Created at:</strong> {{date}}
+  <br>
+  <br>
+  <strong>Description:</strong><br>
+  {{issue["body"]}}
+</body>
+<footer style="position:absolute; bottom:50px; color:gray">App made by Michael Cheng</footer>
+
+
+</html>
